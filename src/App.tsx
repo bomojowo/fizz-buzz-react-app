@@ -9,15 +9,15 @@ function App(): JSX.Element {
 
   const handleFizzBuzz =() => {
     if(currentNumber % 5 === 0 && currentNumber % 3 ===0){
-      setStoredNumberArray([...storedNumberArray, 'Fizz-Buzz',',']);
+      setStoredNumberArray([...storedNumberArray, 'Fizz-Buzz',', ']);
     } else{
       if(currentNumber % 5 === 0){
-        setStoredNumberArray([...storedNumberArray, 'Buzz',',']);
+        setStoredNumberArray([...storedNumberArray, 'Buzz',', ']);
       } else{
         if(currentNumber % 3 ===0){
-          setStoredNumberArray([...storedNumberArray, 'Fizz',','])
+          setStoredNumberArray([...storedNumberArray, 'Fizz',', '])
         } else{
-          setStoredNumberArray([...storedNumberArray, currentNumber.toString(),','])
+          setStoredNumberArray([...storedNumberArray, currentNumber.toString(),', '])
         }
       }
     }

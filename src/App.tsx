@@ -25,6 +25,8 @@ function App(): JSX.Element {
     }
   };
 
+
+
   const handleNextNumber = () => {
     setCurrentNumber((currentNumber) => currentNumber + 1);
   };
@@ -40,7 +42,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      <h1>{greet("World")}</h1>
+      <h1>{greet("Reg")}</h1>
       <p>current number: {currentNumber}</p>
       <p>stored numbers: {storedNumberArray}</p>
       <button onClick={() => handleNextClick()}>Next</button>

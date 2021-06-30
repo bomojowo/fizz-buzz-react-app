@@ -25,8 +25,6 @@ function App(): JSX.Element {
     }
   };
 
-
-
   const handleNextNumber = () => {
     setCurrentNumber((currentNumber) => currentNumber + 1);
   };

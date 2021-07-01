@@ -6,14 +6,14 @@ function App(): JSX.Element {
   const [storedNumberArray, setStoredNumberArray] = useState<string[]>([]);
 
   const handleFizzBuzz = () => {
-    if (currentNumber % 5 === 0 && currentNumber % 3 === 0) {
-      isFizzBuzz();
-    } else {
-      if (currentNumber % 5 === 0) {
-        isBuzz();
+      if (isFizzBuzz(currentNumber)){ //call helper fucntion here and pass in parameter from useState cll (currentNumber)
+        setStoredNumberArray([...storedNumberArray, "FizzBuzz"])  
       } else {
-        if (currentNumber % 3 === 0) {
-          isFizz();
+      if (isBuzz(currentNumber)) {
+        setStoredNumberArray([...storedNumberArray, 'Buzz'])
+      } else {
+        if (isFizz(currentNumber)) {
+          setStoredNumberArray([...storedNumberArray, 'Buzz'])
         } else {
           setStoredNumberArray([
             ...storedNumberArray,
@@ -24,28 +24,22 @@ function App(): JSX.Element {
     }
   };
 
-  //helper functions
+  //helper functions contain the logic
 
   //isFizzBuzz()
   //if number is a multiple of both 5 and 3
   //return FizzBuzz
-  const isFizzBuzz = () => {
-    setStoredNumberArray([...storedNumberArray, "FizzBuzz"]);
-  };
+  const isFizzBuzz = (currentNumber: number) => currentNumber % 5 === 0 && currentNumber % 3 === 0 
+    
 
   //isFizz()
   //if number is a multiple of three
   //return fizz
-  const isFizz = () => {
-    setStoredNumberArray([...storedNumberArray, "Fizz"]);
-  };
-
+  const isFizz = (currentNumber: number) => currentNumber % 5 === 0
   //isBuzz()
   //if number a multiple of five
   //return buzz
-  const isBuzz = () => {
-    setStoredNumberArray([...storedNumberArray, "Buzz"]);
-  };
+  const isBuzz = (currentNumber: number) => currentNumber % 3 === 0
 
   //nextFizzBuzzIteration()
   //if number is not a multiple of 5 or 3

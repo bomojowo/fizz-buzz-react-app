@@ -7,23 +7,49 @@ function App(): JSX.Element {
 
   const handleFizzBuzz = () => {
     if (currentNumber % 5 === 0 && currentNumber % 3 === 0) {
-      setStoredNumberArray([...storedNumberArray, "Fizz-Buzz", ", "]);
+      isFizzBuzz();
     } else {
       if (currentNumber % 5 === 0) {
-        setStoredNumberArray([...storedNumberArray, "Buzz", ", "]);
+        isBuzz();
       } else {
         if (currentNumber % 3 === 0) {
-          setStoredNumberArray([...storedNumberArray, "Fizz", ", "]);
+          isFizz();
         } else {
           setStoredNumberArray([
             ...storedNumberArray,
             currentNumber.toString(),
-            ", ",
           ]);
         }
       }
     }
   };
+
+  //helper functions
+
+  //isFizzBuzz()
+  //if number is a multiple of both 5 and 3
+  //return FizzBuzz
+  const isFizzBuzz = () => {
+    setStoredNumberArray([...storedNumberArray, "FizzBuzz"]);
+  };
+
+  //isFizz()
+  //if number is a multiple of three
+  //return fizz
+  const isFizz = () => {
+    setStoredNumberArray([...storedNumberArray, "Fizz"]);
+  };
+
+  //isBuzz()
+  //if number a multiple of five
+  //return buzz
+  const isBuzz = () => {
+    setStoredNumberArray([...storedNumberArray, "Buzz"]);
+  };
+
+  //nextFizzBuzzIteration()
+  //if number is not a multiple of 5 or 3
+  //return number
 
   const handleNextNumber = () => {
     setCurrentNumber((currentNumber) => currentNumber + 1);
@@ -41,8 +67,13 @@ function App(): JSX.Element {
   return (
     <>
       <h1>{greet("Reg")}</h1>
-      <p>current number: {currentNumber}</p>
-      <p>stored numbers: {storedNumberArray}</p>
+      <p>
+        <b>Fizz, Buzz or Fizz-Buzz:</b>{" "}
+        {storedNumberArray.map((num: string, index): JSX.Element => {
+          return <li key={index}>{num}</li>;
+        })}
+      </p>
+      <hr />
       <button onClick={() => handleNextClick()}>Next</button>
     </>
   );

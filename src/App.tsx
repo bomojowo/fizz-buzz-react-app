@@ -2,23 +2,21 @@ import { useState } from "react";
 import { greet } from "./utils/greet";
 
 function App(): JSX.Element {
-  const [currentNumber, setCurrentNumber] = useState<number>(1);
-  const [storedNumberArray, setStoredNumberArray] = useState<string[]>([]);
+  const [number, setnumber] = useState<number>(1);
+  const [numberArray, setnumberArray] = useState<string[]>([]);
 
   const handleFizzBuzz = () => {
-      if (isFizzBuzz(currentNumber)){ //call helper fucntion here and pass in parameter from useState cll (currentNumber)
-        setStoredNumberArray([...storedNumberArray, "FizzBuzz"])  
+    if (isFizzBuzz(number)) {
+      //call helper fucntion here and pass in parameter from useState cll (number)
+      setnumberArray([...numberArray, "FizzBuzz"]);
+    } else {
+      if (isBuzz(number)) {
+        setnumberArray([...numberArray, "Buzz"]);
       } else {
-      if (isBuzz(currentNumber)) {
-        setStoredNumberArray([...storedNumberArray, 'Buzz'])
-      } else {
-        if (isFizz(currentNumber)) {
-          setStoredNumberArray([...storedNumberArray, 'Buzz'])
+        if (isFizz(number)) {
+          setnumberArray([...numberArray, "Buzz"]);
         } else {
-          setStoredNumberArray([
-            ...storedNumberArray,
-            currentNumber.toString(),
-          ]);
+          setnumberArray([...numberArray, number.toString()]);
         }
       }
     }
@@ -29,24 +27,23 @@ function App(): JSX.Element {
   //isFizzBuzz()
   //if number is a multiple of both 5 and 3
   //return FizzBuzz
-  const isFizzBuzz = (currentNumber: number) => currentNumber % 5 === 0 && currentNumber % 3 === 0 
-    
+  const isFizzBuzz = (number: number) => number % 5 === 0 && number % 3 === 0;
 
   //isFizz()
   //if number is a multiple of three
   //return fizz
-  const isFizz = (currentNumber: number) => currentNumber % 5 === 0
+  const isFizz = (number: number) => number % 5 === 0;
   //isBuzz()
   //if number a multiple of five
   //return buzz
-  const isBuzz = (currentNumber: number) => currentNumber % 3 === 0
+  const isBuzz = (number: number) => number % 3 === 0;
 
   //nextFizzBuzzIteration()
   //if number is not a multiple of 5 or 3
   //return number
 
   const handleNextNumber = () => {
-    setCurrentNumber((currentNumber) => currentNumber + 1);
+    setnumber((number) => number + 1);
   };
 
   const handleNextClick = () => {
@@ -63,7 +60,7 @@ function App(): JSX.Element {
       <h1>{greet("Reg")}</h1>
       <p>
         <b>Fizz, Buzz or Fizz-Buzz:</b>{" "}
-        {storedNumberArray.map((num: string, index): JSX.Element => {
+        {numberArray.map((num: string, index): JSX.Element => {
           return <li key={index}>{num}</li>;
         })}
       </p>

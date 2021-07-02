@@ -14,7 +14,7 @@ function App(): JSX.Element {
         setnumberArray([...numberArray, "Buzz"]);
       } else {
         if (isFizz(number)) {
-          setnumberArray([...numberArray, "Buzz"]);
+          setnumberArray([...numberArray, "Fizz"]);
         } else {
           setnumberArray([...numberArray, number.toString()]);
         }
